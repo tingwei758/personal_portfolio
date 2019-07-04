@@ -1,4 +1,5 @@
 {% load dsu %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,8 @@
 	{% dsu_stylesheet_url %}
 	{% dsu_jquery_url %}
 	{% dsu_javascript_url %}
+    <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'tinymce/js/prism.js' %}"></script>
 	<script>
 		$(document)
 		.ready(function() {
@@ -127,7 +130,7 @@
 
 
 	{% for post in posts %}
-        <div class="ui text container">
+        <div class="ui main text container">
             <h2><a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></h2>
             <p>
                 {{ post.created_on.date }} |&nbsp;Categories:&nbsp;
@@ -135,7 +138,7 @@
                     <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>&nbsp;
                 {% endfor %}
             </p>
-            <p>{{ post.body | slice:":8000" }}...</p>
+            <p>{{ post.body | slice:":8000" | safe }}...</p>
         </div>
 	{% endfor %}
 
