@@ -5,39 +5,54 @@
 <head>
     <meta charset="UTF-8">
     {% dsu_stylesheet_url %}
+    {% dsu_jquery_url %}
+	{% dsu_javascript_url %}
+    <script>
+        $(document)
+		.ready(function() {
+            $('.special.cards .image').dimmer({
+              on: 'hover'
+            });
+        })
+    </script>
     <title>Projects</title>
 </head>
 <body>
 <h1>Projects</h1>
-
-{% for project in projects %}
-    <div class="ui card visible">
-        <div class="blurring dimmable image">
-            <div class="ui dimmer transition hidden">
-                <div class="content">
-                    <div class="center">
-                        <div class="ui inverted button">Call to Action</div>
+    <div class="ui text container">
+        {% for project in projects %}
+            <div class="ui special cards">
+                <div class="ui card visible">
+                    <div class="blurring dimmable image">
+                        <div class="ui dimmer transition hidden">
+                            <div class="content">
+                                <div class="center">
+                                    <div class="ui inverted button">Show Details</div>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="{% static "img/project1.jpg" %}">
+                    </div>
+                    <div class="content">
+                        <a href="{% url 'project_detail' project.pk %}" class="header">
+                            {{ project.title }}
+                        </a>
+                        <div class="meta">
+                        <span class="group">{{ project.category }} abc</span>
+                        </div>
+                        <div class="description">{{ project.description }}</div>
+                    </div>
+                    <div class="extra content">
+                        <a>
+                            <i class="users icon"></i>
+                            Users
+                        </a>
                     </div>
                 </div>
             </div>
-            <img src="{% static "img/project1.jpg" %}">
-        </div>
-        <div class="content">
-            <a href="{% url 'project_detail' project.pk %}" class="header">
-                {{ project.title }}
-            </a>
-            <div class="meta">
-            <span class="group">{{ project.category }} abc</span>
-            </div>
-            <div class="description">{{ project.description }}</div>
-        </div>
-        <div class="extra content">
-            <a>
-                <i class="users icon"></i>
-                Users
-            </a>
-        </div>
+        {% endfor %}
     </div>
-{% endfor %}
+
+
 </body>
 </html>

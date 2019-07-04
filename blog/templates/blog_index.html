@@ -1,0 +1,143 @@
+{% load dsu %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	{% dsu_stylesheet_url %}
+	{% dsu_jquery_url %}
+	{% dsu_javascript_url %}
+	<script>
+		$(document)
+		.ready(function() {
+
+          // fix main menu to page on passing
+          $('.main.menu').visibility({
+          	type: 'fixed'
+          });
+          $('.overlay').visibility({
+          	type: 'fixed',
+          	offset: 80
+          });
+
+          // lazy load images
+          $('.image').visibility({
+          	type: 'image',
+          	transition: 'vertical flip in',
+          	duration: 500
+          });
+
+          // show dropdown on hover
+          $('.main.menu  .ui.dropdown').dropdown({
+          	on: 'hover'
+          });
+      })
+		;
+	</script>
+	<style type="text/css">
+		body {
+			background-color: #FFFFFF;
+		}
+		.main.container {
+			margin-top: 2em;
+		}
+
+		.main.menu {
+			margin-top: 4em;
+			border-radius: 0;
+			border: none;
+			box-shadow: none;
+			transition:
+			box-shadow 0.5s ease,
+			padding 0.5s ease
+			;
+		}
+		.main.menu .item img.logo {
+			margin-right: 1.5em;
+		}
+
+		.overlay {
+			float: left;
+			margin: 0em 3em 1em 0em;
+		}
+		.overlay .menu {
+			position: relative;
+			left: 0;
+			transition: left 0.5s ease;
+		}
+
+		.main.menu.fixed {
+			background-color: #FFFFFF;
+			border: 1px solid #DDD;
+			box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+		}
+		.overlay.fixed .menu {
+			left: 800px;
+		}
+
+		.text.container .left.floated.image {
+			margin: 2em 2em 2em -4em;
+		}
+		.text.container .right.floated.image {
+			margin: 2em -4em 2em 2em;
+		}
+
+		.ui.footer.segment {
+			margin: 5em 0em 0em;
+			padding: 5em 0em;
+		}
+
+	</style>
+	<title>Blog</title>
+</head>
+<body>
+
+	<div class="ui main text container">
+		<h1 class="ui header">Sticky Example</h1>
+		<p>This example shows how to use lazy loaded images, a sticky menu, and a simple text container</p>
+	</div>
+
+	<div class="ui borderless main menu" style="">
+		<div class="ui text container">
+			<div class="header item">
+				{#        <img class="logo" src="assets/images/logo.png">#}
+				Project Name
+			</div>
+			<a href="#" class="item">Blog</a>
+			<a href="#" class="item">Articles</a>
+			<a href="#" class="ui right floated dropdown item" tabindex="0">
+				Dropdown <i class="dropdown icon"></i>
+				<div class="menu" tabindex="-1">
+					<div class="item">Link Item</div>
+					<div class="item">Link Item</div>
+					<div class="divider"></div>
+					<div class="header">Header Item</div>
+					<div class="item">
+						<i class="dropdown icon"></i>
+						Sub Menu
+						<div class="menu">
+							<div class="item">Link Item</div>
+							<div class="item">Link Item</div>
+						</div>
+					</div>
+					<div class="item">Link Item</div>
+				</div>
+			</a>
+		</div>
+	</div>
+
+
+	{% for post in posts %}
+        <div class="ui text container">
+            <h2><a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></h2>
+            <p>
+                {{ post.created_on.date }} |&nbsp;Categories:&nbsp;
+                {% for category in post.categories.all %}
+                    <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>&nbsp;
+                {% endfor %}
+            </p>
+            <p>{{ post.body | slice:":8000" }}...</p>
+        </div>
+	{% endfor %}
+
+</body>
+</html>
