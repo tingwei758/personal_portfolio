@@ -31,8 +31,13 @@
                         </div>
                         <div class="extra content">
                             <div>
-                                <i class="users icon"></i>
-                                Users
+                                {% if project.group %}
+                                    <i class="users icon"></i>
+                                    Group
+                                {% else %}
+                                    <i class="user icon"></i>
+                                    Individual
+                                {% endif %}
                             </div>
                         </div>
                     </div>

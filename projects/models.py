@@ -6,6 +6,7 @@ class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     category = models.CharField(max_length=100)
+    group = models.BooleanField(default=False)
     image = models.FilePathField(path=settings.BASE_DIR + '/projects/static/img/')
 
     def __str__(self):
