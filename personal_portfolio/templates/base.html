@@ -1,1 +1,186 @@
-{% block page_content %}{% endblock %}
+{% load dsu %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	{% dsu_stylesheet_url %}
+	{% dsu_jquery_url %}
+	{% dsu_javascript_url %}
+    <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'tinymce/js/prism.js' %}"></script>
+	<script>
+		$(document)
+		.ready(function() {
+            // fix main menu to page on passing
+            $('.main.menu').visibility({
+            type: 'fixed'
+            });
+            $('.overlay').visibility({
+            type: 'fixed',
+            offset: 80
+            });
+
+            // lazy load images
+            $('.image').visibility({
+            type: 'image',
+            transition: 'vertical flip in',
+            duration: 500
+            });
+
+            // show dropdown on hover
+            $('.main.menu  .ui.dropdown').dropdown({
+            on: 'hover'
+            });
+
+            // card dimmer on hover
+            $('.special.cards .image').dimmer({
+              on: 'hover'
+            });
+		});
+	</script>
+	<style type="text/css">
+		body {
+			background-color: #FFFFFF;
+		}
+		.main.container {
+			margin-top: 2em;
+		}
+
+		.main.menu {
+			margin-top: 4em;
+			border-radius: 0;
+			border: none;
+			box-shadow: none;
+			transition:
+			box-shadow 0.5s ease,
+			padding 0.5s ease
+			;
+		}
+		.main.menu .item img.logo {
+			margin-right: 1.5em;
+		}
+
+		.overlay {
+			float: left;
+			margin: 0em 3em 1em 0em;
+		}
+		.overlay .menu {
+			position: relative;
+			left: 0;
+			transition: left 0.5s ease;
+		}
+
+		.main.menu.fixed {
+			background-color: #FFFFFF;
+			border: 1px solid #DDD;
+			box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+		}
+		.overlay.fixed .menu {
+			left: 800px;
+		}
+
+		.text.container .left.floated.image {
+			margin: 2em 2em 2em -4em;
+		}
+		.text.container .right.floated.image {
+			margin: 2em -4em 2em 2em;
+		}
+
+		.ui.footer.segment {
+			margin: 5em 0em 0em;
+			padding: 3em 0em;
+            border-top: 1px solid #DDDDDD;
+            box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.08) inset;
+            background-color: #FAFAFA;
+		}
+
+        .ui.footer .link{
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .ui.footer .link:hover{
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+
+	</style>
+	<title>{% block title %}Title{% endblock %}</title>
+</head>
+<body>
+
+	<div class="ui main container">
+		<h1 class="ui header">Sticky Example</h1>
+		<p>This example shows how to use lazy loaded images, a sticky menu, and a simple text container</p>
+	</div>
+
+	<div class="ui borderless main menu" style="">
+		<div class="ui container">
+			<div class="header item">
+				{#        <img class="logo" src="assets/images/logo.png">#}
+				Mike Zhang
+			</div>
+            <a href="#" class="item">Me</a>
+            <a href="{% url 'project_index' %}" class="item">Projects</a>
+            <a href="{% url 'blog_index' %}" class="item">Blog</a>
+			<a href="#" class="ui right floated dropdown item" tabindex="0">
+				Dropdown <i class="dropdown icon"></i>
+				<div class="menu" tabindex="-1">
+					<div class="item">Link Item</div>
+					<div class="item">Link Item</div>
+					<div class="divider"></div>
+					<div class="header">Header Item</div>
+					<div class="item">
+						<i class="dropdown icon"></i>
+						Sub Menu
+						<div class="menu">
+							<div class="item">Link Item</div>
+							<div class="item">Link Item</div>
+						</div>
+					</div>
+					<div class="item">Link Item</div>
+				</div>
+			</a>
+		</div>
+	</div>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <div class="ui vertical footer segment">
+        <div class="ui center aligned container">
+            <div class="ui list">
+                <div class="item">
+                    <div class="ui massive horizontal list">
+                        <div class="item">
+                            <a class="link">
+                                <i class="facebook icon"></i>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a class="link">
+                                <i class="github icon"></i>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a class="link">
+                                <i class="linkedin icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ui horizontal divided list">
+                        <div class="item">Copyright © Mike Zhang</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
+
