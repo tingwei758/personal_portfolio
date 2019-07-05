@@ -14,14 +14,16 @@
                             <div class="ui dimmer transition hidden">
                                 <div class="content">
                                     <div class="center">
-                                        <div class="ui inverted button">View</div>
+                                        <a href="{% url 'project_detail' project.url %}" class="header">
+                                            <div class="ui inverted button">View</div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                             <img src="{% static project.image %}">
                         </div>
                         <div class="content">
-                            <a href="{% url 'project_detail' project.pk %}" class="header">
+                            <a href="{% url 'project_detail' project.url %}" class="header">
                                 {{ project.title }}
                             </a>
                             <div class="meta">

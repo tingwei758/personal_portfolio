@@ -9,9 +9,9 @@ def project_index(request):
     }
     return render(request, 'project_index.html', context)
 
-def project_detail(request, pk):
-    project = Project.objects.get(pk=pk)
+def project_detail(request, url):
+    project = Project.objects.get(url=url)
     context = {
         'project': project
     }
-    return render(request, 'project_detail.html', context)
+    return render(request, project.filename, context)
