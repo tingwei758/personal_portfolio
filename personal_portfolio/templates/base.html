@@ -38,6 +38,7 @@
             });
 		});
 	</script>
+
 	<style type="text/css">
 		body {
 			background-color: #FFFFFF;
@@ -59,9 +60,6 @@
 		.main.menu .item img.logo {
 			margin-right: 1.5em;
 		}
-        .main.menu .item.header {
-            margin: 2px 2px 2px 2px;
-        }
 
 		.overlay {
 			float: left;
@@ -104,45 +102,46 @@
         .ui.footer .link:hover{
             color: rgba(0, 0, 0, 0.7);
         }
-
-
 	</style>
+
 	<title>{% block title %}Title{% endblock %}</title>
 </head>
 <body>
 
     {% block topbar %}
 	<div class="ui main container">
-        <img class="ui small circular image" src="{% static 'img/auto-portrait.png' %}">
+{#        <img class="ui small circular image" src="{% static 'img/auto-portrait.png' %}">#}
 	</div>
     {% endblock %}
 
 	<div class="ui borderless main menu" style="">
 		<div class="ui container">
-			<div class="header item">
-				My Portfolio
-			</div>
-            <a href="{% url 'main:homepage' %}" class="item">Home</a>
-            <a href="{% url 'project_index' %}" class="item">Projects</a>
-            <a href="{% url 'blog_index' %}" class="item">Blog</a>
-			<a href="#" class="ui right floated dropdown item" tabindex="0">
-				Dropdown <i class="dropdown icon"></i>
-				<div class="menu" tabindex="-1">
-					<div class="item">Link Item</div>
-					<div class="item">Link Item</div>
-					<div class="divider"></div>
-					<div class="header">Header Item</div>
-					<div class="item">
-						<i class="dropdown icon"></i>
-						Sub Menu
-						<div class="menu">
-							<div class="item">Link Item</div>
-							<div class="item">Link Item</div>
-						</div>
-					</div>
-					<div class="item">Link Item</div>
-				</div>
-			</a>
+            <div class="ui large secondary menu">
+                <div class="header item">
+                    My Portfolio
+                </div>
+                <a href="{% url 'main:homepage' %}" class="item">Home</a>
+                <a href="{% url 'project_index' %}" class="item">Projects</a>
+                <a href="{% url 'blog_index' %}" class="item">Blog</a>
+                <a href="#" class="ui right floated dropdown item" tabindex="0">
+                    Dropdown <i class="dropdown icon"></i>
+                    <div class="menu" tabindex="-1">
+                        <div class="item">Link Item</div>
+                        <div class="item">Link Item</div>
+                        <div class="divider"></div>
+                        <div class="header">Header Item</div>
+                        <div class="item">
+                            <i class="dropdown icon"></i>
+                            Sub Menu
+                            <div class="menu">
+                                <div class="item">Link Item</div>
+                                <div class="item">Link Item</div>
+                            </div>
+                        </div>
+                        <div class="item">Link Item</div>
+                    </div>
+                </a>
+            </div>
 		</div>
 	</div>
 
