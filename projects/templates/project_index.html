@@ -1,7 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Projects{% endblock %}
+{% block header %}
+<script>
+    $(document)
+    .ready(function() {
+        // card dimmer on hover
+        $('.special.cards .image').dimmer({
+          on: 'hover'
+        });
+    });
+</script>
+{% endblock %}
+
+{% block title %}Mike Zhang | Projects{% endblock %}
 
 {% block content %}
 <div class="ui text container">

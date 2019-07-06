@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Blog{% endblock %}
+{% block header %}
+    <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'tinymce/js/prism.js' %}"></script>
+{% endblock %}
+
+{% block title %}Mike Zhang | Blog{% endblock %}
 
 
 {% block content %}
