@@ -40,6 +40,32 @@
 			background-color: #FFFFFF;
 		}
 
+        .banner {
+            background-attachment: fixed;
+            background: url("http://iosband.github.io/images/shuttle-hoover.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .banner .inverted.masthead {
+            background-color: rgba(27, 28, 29, 0.9);
+        }
+
+        .ui.secondary.inverted.pointing.menu.borderless {
+            border-color: transparent;
+        }
+
+        .ui.secondary.pointing.menu {
+            margin-left: -.54514286em;
+            margin-right: -.35714286em;
+        }
+
+        .ui.secondary.pointing.menu .item {
+            padding: .78571429em .92857143em;
+            margin: 0 .35714286em;
+        }
+
         .hidden.menu {
 		    display: none;
         }
@@ -156,28 +182,30 @@
 </div>
 
 <div>
-	<div class="ui inverted vertical masthead center aligned segment">
+    <div class="banner">
+        <div class="ui inverted vertical masthead center aligned segment">
+            <div class="ui container">
+                <div class="ui large secondary inverted pointing borderless menu">
+                    <div class="header item">
+                        My Portfolio
+                    </div>
+                    <a href="#" class="active item">Home</a>
+                    <a href="{% url 'project_index' %}" class="item">Projects</a>
+                    <a href="{% url 'blog_index' %}" class="item">Blog</a>
+                </div>
+            </div>
 
-		<div class="ui container">
-			<div class="ui large secondary inverted pointing menu">
-				<div class="header item">
-					My Portfolio
-				</div>
-				<a href="#" class="active item">Home</a>
-				<a href="{% url 'project_index' %}" class="item">Projects</a>
-				<a href="{% url 'blog_index' %}" class="item">Blog</a>
-			</div>
-		</div>
+            <div class="ui text container">
+                <h1 class="ui inverted header">
+                    Mike Zhang
+                </h1>
+                <h2>Data Scientist</h2>
+    {#            <div class="ui huge primary button">Get Started <i class="right arrow icon"></i></div>#}
+            </div>
 
-		<div class="ui text container">
-			<h1 class="ui inverted header">
-				Mike Zhang
-			</h1>
-			<h2>Data Scientist</h2>
-{#            <div class="ui huge primary button">Get Started <i class="right arrow icon"></i></div>#}
-		</div>
+        </div>
+    </div>
 
-	</div>
 
 	<div class="ui vertical stripe segment">
 		<div class="ui middle aligned stackable grid container">
