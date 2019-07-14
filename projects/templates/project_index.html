@@ -16,7 +16,12 @@
 {% block title %}Mike Zhang | Projects{% endblock %}
 
 {% block content %}
-<div class="ui text container">
+<div class="ui main text container">
+    <div class="introduction">
+        <h1 class="ui header">Projects</h1>
+        <div class="ui hidden divider"></div>
+    </div>
+
     <div class="ui stackable two column grid">
         {% for project in projects %}
             <div class="eight wide column">
