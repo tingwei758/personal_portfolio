@@ -21,7 +21,7 @@
         <div class="blog summary">
             <h2 class="ui header"><a href="{% url 'blog_detail' post.url%}">{{ post.title }}</a></h2>
             <p>
-                {{ post.created_on.date }} |&nbsp;Categories:&nbsp;
+                {{ post.created_on.date | date:'M. Y' }} |&nbsp;Categories:&nbsp;
                 {% for category in post.categories.all %}
                     <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>&nbsp;
                 {% endfor %}
