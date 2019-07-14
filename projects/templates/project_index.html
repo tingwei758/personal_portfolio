@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="{% static project.image %}">
+                            <img src="{{ project.image.url }} ">
                         </div>
                         <div class="content">
                             <a href="{% url 'project_detail' project.url %}" class="header">
