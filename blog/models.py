@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.template.defaultfilters import slugify
 
 # Create your models here.
 class Category(models.Model):
@@ -21,6 +22,8 @@ class Post(models.Model):
 
     body = models.TextField()
 
+    url = models.SlugField(blank=True, editable=False)
+
     def __str__(self):
         return self.title
 
@@ -29,4 +32,5 @@ class Post(models.Model):
         if not self.id:
             self.created_on = timezone.now()
         self.last_modified = timezone.now()
+        self.url = self.s = slugify(self.title)
         return super(Post, self).save(*args, **kwargs)

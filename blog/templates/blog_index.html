@@ -19,7 +19,7 @@
 
     {% for post in posts %}
         <div class="blog summary">
-            <h2 class="ui header"><a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></h2>
+            <h2 class="ui header"><a href="{% url 'blog_detail' post.url%}">{{ post.title }}</a></h2>
             <p>
                 {{ post.created_on.date }} |&nbsp;Categories:&nbsp;
                 {% for category in post.categories.all %}
