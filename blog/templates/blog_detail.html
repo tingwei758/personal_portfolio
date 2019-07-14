@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog | {{ post.title }}</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
 
-</body>
-</html>
+{% block header %}
+    <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'tinymce/js/prism.js' %}"></script>
+{% endblock %}
+
+{% block title %}Mike Zhang | {{ post.title }}{% endblock %}
+
+
+{% block content %}
+<div class="ui main text container">
+    <div class="introduction">
+        <h1 class="ui header">
+            {{ post.title }}
+        </h1>
+        <p>
+            {{ post.created_on.date }} |&nbsp;Categories:&nbsp;
+            {% for category in post.categories.all %}
+                <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>&nbsp;
+            {% endfor %}
+        </p>
+        <div class="ui hidden divider"></div>
+    </div>
+
+    <div class="blog content">
+        {{ post.body | safe }}
+    </div>
+
+
+{#    {% for post in posts %}#}
+{#        <div class="blog summary">#}
+{#            <h2 class="ui header"><a href="{% url 'blog_detail' post.url%}">{{ post.title }}</a></h2>#}
+{#            <p>#}
+{#                {{ post.created_on.date }} |&nbsp;Categories:&nbsp;#}
+{#                {% for category in post.categories.all %}#}
+{#                    <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>&nbsp;#}
+{#                {% endfor %}#}
+{#            </p>#}
+{#            <p>{{ post.body | truncatechars_html:500 | safe }}...</p>#}
+{#        </div>#}
+{#        <div class="ui hidden divider"></div>#}
+{#    {% endfor %}#}
+</div>
+
+
+{% endblock %}

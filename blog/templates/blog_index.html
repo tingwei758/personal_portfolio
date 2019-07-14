@@ -26,7 +26,7 @@
                     <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>&nbsp;
                 {% endfor %}
             </p>
-            <p>{{ post.body | truncatechars_html:500 | safe }}...</p>
+            {{ post.body | truncatechars_html:500 | safe }}
         </div>
         <div class="ui hidden divider"></div>
     {% endfor %}
