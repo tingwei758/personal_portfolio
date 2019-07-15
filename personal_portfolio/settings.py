@@ -38,11 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'django_semantic_ui',
     'tinymce',
     'main',
     'projects',
     'blog',
+    'disqus',
 ]
 
 TINYMCE_DEFAULT_CONFIG = {
@@ -148,6 +150,17 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# sites
+
+SITE_ID = 1
+
+
+# Disqus API
+
+DISQUS_API_KEY = 'WeN7igLpEvNZhRs4Kih8Tjk2mhAwlCrZ1tTaJ85th3N29gR30yxvPECpCCBNPN0X'
+DISQUS_WEBSITE_SHORTNAME = 'portfolio-mike'
 
 
 # Static files (CSS, JavaScript, Images)

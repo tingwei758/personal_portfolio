@@ -4,6 +4,8 @@
 {% block header %}
     <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet" type="text/css">
     <script src="{% static 'tinymce/js/prism.js' %}"></script>
+    {% load disqus_tags %}
+    {% disqus_dev %}
 {% endblock %}
 
 {% block title %}Mike Zhang | {{ post.title }}{% endblock %}
@@ -26,22 +28,17 @@
 
     <div class="blog content">
         {{ post.body | safe }}
+        <div class="ui hidden divider"></div>
     </div>
 
+    <div class="blog comment">
+        {% load disqus_tags %}
+        {% set_disqus_identifier post.pk|stringformat:"i" %}
+        {% set_disqus_url post.get_full_path %}
+        {% set_disqus_title post.title %}
+        {% disqus_show_comments %}
+    </div>
 
-{#    {% for post in posts %}#}
-{#        <div class="blog summary">#}
-{#            <h2 class="ui header"><a href="{% url 'blog_detail' post.url%}">{{ post.title }}</a></h2>#}
-{#            <p>#}
-{#                {{ post.created_on.date }} |&nbsp;Categories:&nbsp;#}
-{#                {% for category in post.categories.all %}#}
-{#                    <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>&nbsp;#}
-{#                {% endfor %}#}
-{#            </p>#}
-{#            <p>{{ post.body | truncatechars_html:500 | safe }}...</p>#}
-{#        </div>#}
-{#        <div class="ui hidden divider"></div>#}
-{#    {% endfor %}#}
 </div>
 
 
