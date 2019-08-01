@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Post
+from .models import Post, Category
 
 # Create your views here.
 def blog_index(request):
@@ -9,9 +9,10 @@ def blog_index(request):
     }
     return render(request, "blog_index.html", context)
 
-def blog_category(request, category):
+def blog_category(request, category_name):
+    category = Category.objects.get(name=category_name)
     posts = Post.objects.filter(
-        categories__name__contains=category
+        categories__name__contains=category_name
     ).order_by(
         '-created_on'
     )
