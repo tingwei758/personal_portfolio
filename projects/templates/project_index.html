@@ -11,6 +11,18 @@
         });
     });
 </script>
+<style type="text/css">
+    .ui.card .description.ellipsis {
+        display: block;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        height: 75px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+
 {% endblock %}
 
 {% block title %}Mike Zhang | Projects{% endblock %}
@@ -46,7 +58,7 @@
                             <div class="meta">
                             <span class="group">{{ project.category }}</span>
                             </div>
-                            <div class="description">{{ project.description }}</div>
+                            <div class="description ellipsis">{{ project.description }}</div>
                         </div>
                         <div class="extra content">
                             <div>
