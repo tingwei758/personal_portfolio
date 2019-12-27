@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from projects.models import Project
 
 # Create your views here.
@@ -11,7 +11,4 @@ def project_index(request):
 
 def project_detail(request, url):
     project = Project.objects.get(url=url)
-    context = {
-        'project': project
-    }
-    return render(request, project.filename, context)
+    return redirect(project.filename)
